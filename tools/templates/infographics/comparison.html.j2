@@ -1,0 +1,24 @@
+{% extends "base.html.j2" %}
+{# g.left / g.right: {heading: "Before", items: ["...", "..."]} #}
+{% block style %}
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--rule); }
+  .col { padding: 22px 22px 18px; }
+  .col.l { background: var(--panel); }
+  .col.r { background: {% if g.theme == "dark" %}var(--black){% else %}var(--white){% endif %};
+           border-left: 3px solid {% if g.theme == "dark" %}var(--silver){% else %}var(--charcoal){% endif %}; }
+  .h { font: 600 17px/1.2 "Montserrat", Arial, sans-serif; margin-bottom: 14px; color: var(--fg); }
+  ul { list-style: none; }
+  li { font: 400 14px/1.45 "Inter", Arial, sans-serif; color: var(--fg); padding: 9px 0 9px 22px; position: relative;
+       border-top: 1px solid var(--rule); }
+  li::before { position: absolute; left: 0; top: 9px; font-weight: 700; }
+  .l li::before { content: "–"; color: {% if g.theme == "dark" %}var(--shadow){% else %}var(--muted){% endif %}; }
+  .r li::before { content: "✓"; color: var(--fg); }
+{% endblock %}
+{% block body %}
+<div class="cols">
+  <div class="col l"><div class="h">{{ g.left.heading }}</div>
+    <ul>{% for i in g.left["items"] %}<li>{{ i }}</li>{% endfor %}</ul></div>
+  <div class="col r"><div class="h">{{ g.right.heading }}</div>
+    <ul>{% for i in g.right["items"] %}<li>{{ i }}</li>{% endfor %}</ul></div>
+</div>
+{% endblock %}

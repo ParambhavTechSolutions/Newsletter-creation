@@ -1,0 +1,27 @@
+{% extends "base.html.j2" %}
+{# g.events: [{date: "2024", title: "...", detail: "..."}]  (3-7 items) #}
+{% block style %}
+  .tl { position: relative; padding-left: 28px; }
+  .tl::before { content: ""; position: absolute; left: 6px; top: 6px; bottom: 6px; width: 2px;
+                background: linear-gradient(180deg, var(--silver), var(--shadow)); }
+  .ev { position: relative; padding-bottom: 22px; }
+  .ev:last-child { padding-bottom: 0; }
+  .ev::before { content: ""; position: absolute; left: -28px; top: 3px; width: 14px; height: 14px;
+                background: var(--bg); border: 3px solid {% if g.theme == "dark" %}var(--silver){% else %}var(--charcoal){% endif %};
+                transform: rotate(45deg); }
+  .date { font: 700 13px/1 "Montserrat", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase;
+          color: {% if g.theme == "dark" %}var(--silver){% else %}var(--charcoal){% endif %}; }
+  .t { font: 600 16px/1.35 "Inter", Arial, sans-serif; margin-top: 6px; color: var(--fg); }
+  .d { font: 400 13.5px/1.5 "Inter", Arial, sans-serif; margin-top: 4px; color: var(--fg2); }
+{% endblock %}
+{% block body %}
+<div class="tl">
+  {% for e in g.events %}
+  <div class="ev">
+    <div class="date">{{ e.date }}</div>
+    <div class="t">{{ e.title }}</div>
+    {% if e.detail %}<div class="d">{{ e.detail }}</div>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

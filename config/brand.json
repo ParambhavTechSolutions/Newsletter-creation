@@ -1,0 +1,127 @@
+{
+  "_source": "brand_assests/Parambhaav_Tech_Brand_Guidelines_v1.pdf (v1.0, 05 Nov 2026)",
+  "name": "Parambhaav Tech",
+  "newsletter_name": "The Parambhaav Brief",
+  "tagline": "Digital Transformation for Growing Businesses",
+  "elevator_pitch": "Parambhaav Tech helps growing businesses simplify operations and embrace digital ways of working. From real estate and education technology to tailored digital services, we make technology practical for the people who use it every day.",
+  "focus_areas": [
+    "Real Estate",
+    "EduTech",
+    "Digital Services"
+  ],
+  "colors": {
+    "primary_black": "#090A0C",
+    "charcoal": "#17191D",
+    "silver": "#D9DDE2",
+    "silver_shadow": "#AEB4BC",
+    "white": "#FFFFFF",
+    "muted_grey": "#727983"
+  },
+  "_color_notes": "Monochrome first. Silver is an accent only - never long body copy. Muted grey never as text on dark backgrounds.",
+  "chart_ramp": [
+    "#090A0C",
+    "#17191D",
+    "#727983",
+    "#AEB4BC",
+    "#D9DDE2"
+  ],
+  "contrast_pairs": [
+    {
+      "use": "body text on page",
+      "fg": "charcoal",
+      "bg": "white",
+      "min": 4.5
+    },
+    {
+      "use": "muted grey: decorative only (rules, bullets, chart fills) - WCAG 1.4.11 non-text 3:1. Never text: it is 4.39:1 on white",
+      "fg": "muted_grey",
+      "bg": "white",
+      "min": 3.0
+    },
+    {
+      "use": "labels/captions on page",
+      "fg": "charcoal",
+      "bg": "white",
+      "min": 4.5
+    },
+    {
+      "use": "header text on black",
+      "fg": "white",
+      "bg": "primary_black",
+      "min": 4.5
+    },
+    {
+      "use": "secondary text on black",
+      "fg": "silver",
+      "bg": "primary_black",
+      "min": 4.5
+    },
+    {
+      "use": "footer small text on charcoal",
+      "fg": "silver_shadow",
+      "bg": "charcoal",
+      "min": 4.5
+    },
+    {
+      "use": "takeaway text on silver panel",
+      "fg": "charcoal",
+      "bg": "silver",
+      "min": 4.5
+    }
+  ],
+  "fonts": {
+    "display": "Montserrat",
+    "display_weight": 600,
+    "body": "Inter",
+    "email_display_stack": "Montserrat, Arial, Helvetica, sans-serif",
+    "email_body_stack": "Inter, Arial, Helvetica, sans-serif",
+    "google_fonts_url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&display=swap",
+    "files": {
+      "Montserrat": "tools/templates/fonts/Montserrat-Variable.ttf",
+      "Inter": "tools/templates/fonts/Inter-Variable.ttf"
+    }
+  },
+  "logo": {
+    "master_svg": "brand_assests/param bhaav_logo_primary_dark.svg",
+    "source_dark": "brand_assests/param bhaav_logo_primary_dark.png",
+    "source_light": "brand_assests/param bhaav_logo_primary_light.png",
+    "source_symbol": "brand_assests/param bhaav_symbol_silver.png",
+    "email_dark": "config/assets/logo_dark_email.png",
+    "email_light": "config/assets/logo_light_email.png",
+    "email_symbol": "config/assets/symbol_email.png",
+    "header_display_width": 200,
+    "min_display_width": 160,
+    "symbol_display_width": 40
+  },
+  "voice": {
+    "do": [
+      "Explain technology in plain business language",
+      "Lead with business outcomes: time saved, better visibility, simpler workflows",
+      "Be confident, clear, practical, dependable and human",
+      "Every claim and number traceable to a cited source",
+      "Show global examples first, then translate them into practical steps for Indian businesses",
+      "Keep amounts in the currency the source uses (USD, EUR, INR in lakh/crore); never convert"
+    ],
+    "dont": [
+      "Jargon or acronyms without explanation",
+      "Hype words (revolutionary, game-changing, disrupt, unleash, supercharge)",
+      "Guaranteed-result claims",
+      "Invented or unsourced statistics",
+      "Invented India figures - India-specific claims need their own Indian source"
+    ],
+    "closing_section_heading": "What this means for Indian businesses"
+  },
+  "ai_image_style": "Editorial illustration for a premium technology consultancy. Strictly monochrome palette: near-black #090A0C, charcoal #17191D, cool silver #D9DDE2, silver shadow #AEB4BC, white. Clean geometric shapes, generous negative space, strong alignment, soft subtle gradients only, brushed-metal silver accents, calm and modern, real business settings (offices, property, classrooms, teams) rendered in a refined minimal style. Absolutely no text, letters, numbers, labels, logos, watermarks or UI copy anywhere in the image. No bright colours, no neon, no clip-art, no hype imagery.",
+  "email": {
+    "width": 600,
+    "gmail_clip_limit_kb": 102,
+    "to": "galagaliprashanth@gmail.com",
+    "from_name": "Parambhaav Tech"
+  },
+  "market": {
+    "country": "India",
+    "base": "Bengaluru",
+    "readers": "owners and leaders of medium-sized, often traditional businesses in India",
+    "editorial_angle": "Explore the technology across the globe (US, Europe, China, Southeast Asia, Middle East, India) with real examples, then close with how Indian businesses can apply it."
+  }
+}

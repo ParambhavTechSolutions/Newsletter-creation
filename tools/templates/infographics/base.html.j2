@@ -1,0 +1,50 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  @font-face { font-family: "Montserrat"; src: url("{{ fonts.Montserrat }}") format("truetype"); font-weight: 100 900; }
+  @font-face { font-family: "Inter"; src: url("{{ fonts.Inter }}") format("truetype"); font-weight: 100 900; }
+  :root {
+    --black: {{ c.primary_black }}; --charcoal: {{ c.charcoal }}; --silver: {{ c.silver }};
+    --shadow: {{ c.silver_shadow }}; --white: {{ c.white }}; --muted: {{ c.muted_grey }};
+    {% if g.theme == "dark" %}
+    --bg: var(--black); --fg: var(--white); --fg2: var(--silver); --rule: #2A2D33; --panel: var(--charcoal);
+    {% else %}
+    --bg: var(--white); --fg: var(--charcoal); --fg2: var(--charcoal); --rule: var(--silver); --panel: #F3F4F6;
+    {% endif %}
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body { width: 600px; font-family: "Inter", Arial, sans-serif; color: var(--fg);
+         -webkit-font-smoothing: antialiased; }
+  #card { width: 600px; background: var(--bg); }
+  .inner { padding: 40px 40px 32px; }
+  .eyebrow { font: 700 12px/1 "Inter", Arial, sans-serif; letter-spacing: .22em; text-transform: uppercase;
+             color: {% if g.theme == "dark" %}var(--shadow){% else %}var(--charcoal){% endif %}; margin-bottom: 14px; }
+  .eyebrow::before { content: ""; display: inline-block; width: 22px; height: 2px; vertical-align: middle;
+                     margin-right: 10px; background: linear-gradient(90deg, var(--silver), var(--shadow)); }
+  h1 { font: 600 28px/1.2 "Montserrat", Arial, sans-serif; letter-spacing: -.01em; color: var(--fg); }
+  .sub { font: 400 15px/1.5 "Inter", Arial, sans-serif; color: var(--fg2); margin-top: 10px; }
+  .body { margin-top: 28px; }
+  .footer { background: var(--charcoal); color: var(--shadow); padding: 14px 40px;
+            display: flex; align-items: center; justify-content: space-between;
+            font: 400 11.5px/1.4 "Inter", Arial, sans-serif; border-top: 1px solid #2A2D33; }
+  .footer .src { max-width: 400px; }
+  .brand { display: flex; align-items: center; gap: 8px; color: var(--silver); font-weight: 600; letter-spacing: .02em; }
+  .brand img { height: 18px; width: auto; }
+  {% block style %}{% endblock %}
+</style></head>
+<body>
+<div id="card" role="img" aria-label="{{ g.alt }}">
+  <div class="inner">
+    {% if g.eyebrow %}<div class="eyebrow">{{ g.eyebrow }}</div>{% endif %}
+    <h1>{{ g.title }}</h1>
+    {% if g.subtitle %}<p class="sub">{{ g.subtitle }}</p>{% endif %}
+    <div class="body">{% block body %}{% endblock %}</div>
+  </div>
+  <div class="footer">
+    <div class="src">{% if g.source %}Source: {{ g.source }}{% endif %}</div>
+    <div class="brand"><img src="{{ symbol }}" alt="">Parambhaav Tech</div>
+  </div>
+</div>
+{% block script %}<script>document.fonts.ready.then(() => { window.__ready = true; });</script>{% endblock %}
+</body></html>

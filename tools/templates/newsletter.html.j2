@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<title>{{ n.subject }}</title>
+<link href="{{ b.fonts.google_fonts_url }}" rel="stylesheet">
+<style>
+  body { margin: 0; padding: 0; background: {{ c.silver }}; }
+  table { border-collapse: collapse; }
+  img { border: 0; display: block; outline: none; text-decoration: none; }
+  a { color: {{ c.charcoal }}; }
+  .display { font-family: {{ b.fonts.email_display_stack }}; }
+  .bodyfont { font-family: {{ b.fonts.email_body_stack }}; }
+  sup a { text-decoration: none; font-weight: 700; }
+  @media only screen and (max-width: 620px) {
+    .container { width: 100% !important; }
+    .px { padding-left: 22px !important; padding-right: 22px !important; }
+    .hero-title { font-size: 26px !important; line-height: 32px !important; }
+    .fluid { width: 100% !important; height: auto !important; }
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background:{{ c.silver }};">
+  {# Preview text shown in the inbox list, padded so Gmail doesn't pull body copy after it #}
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:{{ c.silver }};">
+    {{ n.preview_text }}{% for _ in range(60) %}&#847;&zwnj;&nbsp;{% endfor %}
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:{{ c.silver }};">
+  <tr><td align="center" style="padding:24px 0;">
+
+  <table role="presentation" class="container" width="{{ w }}" cellpadding="0" cellspacing="0" border="0" style="width:{{ w }}px; background:{{ c.white }};">
+
+    {# ---------- HEADER: black band + master logo ---------- #}
+    <tr><td align="center" bgcolor="{{ c.primary_black }}" style="background:{{ c.primary_black }}; padding:28px 40px 22px;">
+      <img src="{{ img('logo') }}" width="{{ b.logo.header_display_width }}" alt="Parambhaav Tech" class="brand-logo"
+           style="width:{{ b.logo.header_display_width }}px; height:auto; margin:0 auto;">
+    </td></tr>
+    <tr><td bgcolor="{{ c.primary_black }}" class="px" style="background:{{ c.primary_black }}; padding:0 40px 20px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td class="bodyfont" style="font-family:{{ b.fonts.email_body_stack }}; font-size:12px; line-height:16px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:{{ c.silver }};">{{ b.newsletter_name }}</td>
+        <td align="right" class="bodyfont" style="font-family:{{ b.fonts.email_body_stack }}; font-size:12px; line-height:16px; color:{{ c.silver }};">{{ n.issue_label }}</td>
+      </tr></table>
+    </td></tr>
+    <tr><td height="3" bgcolor="{{ c.silver_shadow }}" style="height:3px; line-height:3px; font-size:0; background:{{ c.silver_shadow }};">&nbsp;</td></tr>
+
+    {# ---------- HERO ---------- #}
+    <tr><td class="px" style="padding:40px 40px 8px;">
+      {% if n.eyebrow %}<p class="bodyfont" style="margin:0 0 12px; font-family:{{ b.fonts.email_body_stack }}; font-size:13px; line-height:16px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:{{ c.charcoal }};">{{ n.eyebrow }}</p>{% endif %}
+      <h1 class="display hero-title" style="margin:0; font-family:{{ b.fonts.email_display_stack }}; font-size:30px; line-height:37px; font-weight:700; letter-spacing:-0.3px; color:{{ c.primary_black }};">{{ n.headline }}</h1>
+      {% if n.dek %}<p class="bodyfont" style="margin:14px 0 0; font-family:{{ b.fonts.email_body_stack }}; font-size:17px; line-height:27px; color:{{ c.charcoal }};">{{ n.dek }}</p>{% endif %}
+    </td></tr>
+
+    <tr><td class="px" style="padding:16px 40px 0;">
+      {% for p in n.intro %}<p class="bodyfont" style="margin:0 0 16px; font-family:{{ b.fonts.email_body_stack }}; font-size:16px; line-height:26px; color:{{ c.charcoal }};">{{ p | rich }}</p>{% endfor %}
+    </td></tr>
+
+    {# ---------- KEY TAKEAWAYS ---------- #}
+    {% if n.key_takeaways %}
+    <tr><td class="px" style="padding:8px 40px 8px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-left:4px solid {{ c.primary_black }}; background:{{ c.silver }};">
+        <tr><td style="padding:20px 24px 8px;">
+          <p class="display" style="margin:0 0 10px; font-family:{{ b.fonts.email_display_stack }}; font-size:15px; line-height:20px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:{{ c.primary_black }};">In 60 seconds</p>
+          {% for t in n.key_takeaways %}
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+            <td valign="top" width="20" class="bodyfont" style="font-family:{{ b.fonts.email_body_stack }}; font-size:15px; line-height:24px; font-weight:700; color:{{ c.charcoal }};">&#9656;</td>
+            <td class="bodyfont" style="padding-bottom:10px; font-family:{{ b.fonts.email_body_stack }}; font-size:15px; line-height:24px; color:{{ c.charcoal }};">{{ t | rich }}</td>
+          </tr></table>
+          {% endfor %}
+        </td></tr>
+      </table>
+    </td></tr>
+    {% endif %}
+
+    {# ---------- SECTIONS ---------- #}
+    {% for s in n.sections %}
+    <tr><td class="px" style="padding:36px 40px 0;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td width="28" height="3" bgcolor="{{ c.silver_shadow }}" style="width:28px; height:3px; font-size:0; line-height:3px; background:{{ c.silver_shadow }};">&nbsp;</td>
+      </tr></table>
+      <h2 class="display" style="margin:12px 0 14px; font-family:{{ b.fonts.email_display_stack }}; font-size:22px; line-height:29px; font-weight:700; color:{{ c.primary_black }};">{{ s.heading }}</h2>
+      {% for p in s.body %}<p class="bodyfont" style="margin:0 0 16px; font-family:{{ b.fonts.email_body_stack }}; font-size:16px; line-height:26px; color:{{ c.charcoal }};">{{ p | rich }}</p>{% endfor %}
+    </td></tr>
+    {% if s.infographic and s.infographic in graphics %}{% set g = graphics[s.infographic] %}
+    <tr><td class="px" style="padding:8px 40px 4px;">
+      <img src="{{ img(g.id) }}" width="{{ w - 80 }}" alt="{{ g.alt }}" class="fluid"
+           style="width:{{ w - 80 }}px; max-width:100%; height:auto; border:1px solid {{ c.silver }};">
+    </td></tr>
+    {% endif %}
+    {% endfor %}
+
+    {# ---------- WHAT THIS MEANS (brand voice closer) ---------- #}
+    {% if n.business_takeaway %}{% set bt = n.business_takeaway %}
+    <tr><td class="px" style="padding:40px 40px 8px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ c.charcoal }}" style="background:{{ c.charcoal }};">
+        <tr><td style="padding:28px 28px 12px;">
+          <p class="bodyfont" style="margin:0 0 8px; font-family:{{ b.fonts.email_body_stack }}; font-size:12px; line-height:16px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:{{ c.silver_shadow }};">For Indian businesses</p>
+          <h2 class="display" style="margin:0 0 14px; font-family:{{ b.fonts.email_display_stack }}; font-size:22px; line-height:29px; font-weight:700; color:{{ c.white }};">{{ bt.heading or b.voice.closing_section_heading }}</h2>
+          {% for p in bt.body %}<p class="bodyfont" style="margin:0 0 14px; font-family:{{ b.fonts.email_body_stack }}; font-size:15px; line-height:24px; color:{{ c.silver }};">{{ p | rich(c.silver) }}</p>{% endfor %}
+        </td></tr>
+        {% for fa in bt.focus_areas or [] %}
+        <tr><td style="padding:0 28px 14px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid {{ c.muted_grey }};"><tr>
+            <td valign="top" width="130" class="bodyfont" style="padding-top:12px; font-family:{{ b.fonts.email_body_stack }}; font-size:13px; line-height:20px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:{{ c.white }};">{{ fa.name }}</td>
+            <td valign="top" class="bodyfont" style="padding-top:12px; font-family:{{ b.fonts.email_body_stack }}; font-size:14px; line-height:22px; color:{{ c.silver }};">{{ fa.point | rich(c.silver) }}</td>
+          </tr></table>
+        </td></tr>
+        {% endfor %}
+        <tr><td style="padding:0 0 14px;">&nbsp;</td></tr>
+      </table>
+    </td></tr>
+    {% endif %}
+
+    {# ---------- SOURCES ---------- #}
+    {% if n.sources %}
+    <tr><td class="px" style="padding:32px 40px 36px;">
+      <p class="bodyfont" style="margin:0 0 10px; font-family:{{ b.fonts.email_body_stack }}; font-size:13px; line-height:16px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:{{ c.charcoal }};">Sources</p>
+      {% for src in n.sources %}
+      <p class="bodyfont" style="margin:0 0 6px; font-family:{{ b.fonts.email_body_stack }}; font-size:12.5px; line-height:19px; color:{{ c.charcoal }};">
+        <a name="src{{ src.n }}"></a>[{{ src.n }}] <a href="{{ src.url }}" style="color:{{ c.charcoal }};">{{ src.title }}</a>{% if src.publisher %} &middot; {{ src.publisher }}{% endif %}
+      </p>
+      {% endfor %}
+    </td></tr>
+    {% endif %}
+
+    {# ---------- FOOTER ---------- #}
+    <tr><td bgcolor="{{ c.primary_black }}" class="px" align="center" style="background:{{ c.primary_black }}; padding:32px 40px 30px;">
+      <img src="{{ img('symbol') }}" width="{{ b.logo.symbol_display_width }}" alt="Parambhaav Tech symbol"
+           style="width:{{ b.logo.symbol_display_width }}px; height:auto; margin:0 auto 12px;">
+      <p class="display" style="margin:0; font-family:{{ b.fonts.email_display_stack }}; font-size:15px; line-height:20px; font-weight:700; color:{{ c.white }};">Parambhaav Tech</p>
+      <p class="bodyfont" style="margin:4px 0 14px; font-family:{{ b.fonts.email_body_stack }}; font-size:11px; line-height:14px; letter-spacing:4px; text-transform:uppercase; color:{{ c.silver }};">{{ b.tagline }}</p>
+      <p class="bodyfont" style="margin:0 auto; max-width:440px; font-family:{{ b.fonts.email_body_stack }}; font-size:12.5px; line-height:19px; color:{{ c.silver_shadow }};">{{ b.elevator_pitch }}</p>
+      <p class="bodyfont" style="margin:18px 0 0; font-family:{{ b.fonts.email_body_stack }}; font-size:11.5px; line-height:17px; color:{{ c.silver_shadow }};">
+        {{ b.focus_areas | join(" &middot; ") | safe }}
+      </p>
+    </td></tr>
+
+  </table>
+  </td></tr>
+  </table>
+</body>
+</html>

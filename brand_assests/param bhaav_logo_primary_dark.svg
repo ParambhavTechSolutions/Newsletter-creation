@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 900 675">
+<defs><linearGradient id="silver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7F8FA"/><stop offset=".45" stop-color="#D9DDE2"/><stop offset="1" stop-color="#AEB4BC"/></linearGradient></defs>
+<rect width="900" height="675" fill="#090A0C"/>
+<g transform="translate(160,70) scale(.72)"><path d="M 330 100 C 330 65 358 43 400 43 L 500 43 C 545 43 570 68 570 105 C 570 140 545 165 510 165 L 410 165 C 390 165 375 157 365 145 C 382 130 400 124 420 124 L 500 124 C 511 124 520 116 520 105 C 520 94 511 84 500 84 L 400 84 C 370 84 346 90 330 100 Z" fill="url(#silver)"/><path d="M 360 145 C 379 132 395 124 420 124 L 430 124 L 370 250 L 285 250 L 325 171 C 334 156 346 148 360 145 Z" fill="url(#silver)"/></g>
+<text x="450" y="440" text-anchor="middle" fill="#F5F6F7" font-family="Arial,Helvetica,sans-serif" font-size="82" font-weight="700" letter-spacing="-2">Parambhaav</text>
+<text x="450" y="500" text-anchor="middle" fill="#D9DDE2" font-family="Arial,Helvetica,sans-serif" font-size="34" letter-spacing="13">T E C H</text></svg>

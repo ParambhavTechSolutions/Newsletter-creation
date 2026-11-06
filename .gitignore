@@ -1,0 +1,21 @@
+# Secrets
+.env
+credentials.json
+token.json
+
+# Disposable intermediates
+.tmp/*
+!.tmp/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+client_secret*.json
+
+# Personal data (copy config/recipients.example.json)
+config/recipients.json
+
+# Editor / OS
+.vscode/
+.DS_Store

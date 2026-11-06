@@ -1,0 +1,5 @@
+{
+  "_note": "Copy to config/recipients.json. test = who gets drafts and test sends. list = the real distribution list (sent as BCC).",
+  "test": ["you@example.com"],
+  "list": []
+}

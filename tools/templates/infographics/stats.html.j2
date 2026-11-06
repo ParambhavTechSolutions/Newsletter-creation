@@ -1,0 +1,21 @@
+{% extends "base.html.j2" %}
+{# g.stats: [{value: "42", unit: "%", label: "...", note: "..."}]  (1-4 items) #}
+{% block style %}
+  .grid { display: grid; grid-template-columns: repeat({{ [g.stats|length, 2]|min if g.stats|length == 4 else g.stats|length }}, 1fr); gap: 16px; }
+  .stat { background: var(--panel); padding: 22px 20px; border-top: 3px solid var(--shadow); }
+  .val { font: 700 44px/1 "Montserrat", Arial, sans-serif; letter-spacing: -.02em; color: var(--fg); }
+  .val .u { font-size: 22px; font-weight: 600; margin-left: 2px; color: {% if g.theme == "dark" %}var(--silver){% else %}var(--charcoal){% endif %}; }
+  .lbl { font: 600 14px/1.35 "Inter", Arial, sans-serif; margin-top: 12px; color: var(--fg); }
+  .note { font: 400 12.5px/1.45 "Inter", Arial, sans-serif; margin-top: 6px; color: var(--fg2); }
+{% endblock %}
+{% block body %}
+<div class="grid">
+  {% for s in g.stats %}
+  <div class="stat">
+    <div class="val">{{ s.value }}{% if s.unit %}<span class="u">{{ s.unit }}</span>{% endif %}</div>
+    <div class="lbl">{{ s.label }}</div>
+    {% if s.note %}<div class="note">{{ s.note }}</div>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

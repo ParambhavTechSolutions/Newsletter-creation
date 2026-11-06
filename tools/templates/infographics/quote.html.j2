@@ -1,0 +1,17 @@
+{% extends "base.html.j2" %}
+{# g.quote, g.speaker, g.role #}
+{% block style %}
+  h1 { display: none; }
+  .body { margin-top: 0; }
+  .mark { font: 700 96px/0.7 "Montserrat", Arial, sans-serif; height: 48px;
+          background: linear-gradient(135deg, var(--silver), var(--shadow)); -webkit-background-clip: text; color: transparent; }
+  .q { font: 600 24px/1.4 "Montserrat", Arial, sans-serif; letter-spacing: -.01em; color: var(--fg); margin-top: 8px; }
+  .who { margin-top: 24px; padding-top: 16px; border-top: 2px solid var(--rule); }
+  .sp { font: 700 15px/1.3 "Inter", Arial, sans-serif; color: var(--fg); }
+  .rl { font: 400 13.5px/1.4 "Inter", Arial, sans-serif; color: var(--fg2); margin-top: 3px; }
+{% endblock %}
+{% block body %}
+<div class="mark">&ldquo;</div>
+<p class="q">{{ g.quote }}</p>
+<div class="who"><div class="sp">{{ g.speaker }}</div>{% if g.role %}<div class="rl">{{ g.role }}</div>{% endif %}</div>
+{% endblock %}

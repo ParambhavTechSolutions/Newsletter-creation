@@ -1,0 +1,19 @@
+{% extends "base.html.j2" %}
+{# AI illustration (Cloudflare Workers AI, FLUX.1 schnell - free) framed in the branded card.
+   g.image_uri is set by render_infographics.py; g.caption is optional. #}
+{% block style %}
+  .inner { padding-bottom: 28px; }
+  .art { width: 100%; display: block; border: 1px solid var(--rule); }
+  .cap { font: 400 13.5px/1.5 "Inter", Arial, sans-serif; color: var(--fg2); margin-top: 12px; }
+{% endblock %}
+{% block body %}
+<img class="art" src="{{ g.image_uri }}" alt="">
+{% if g.caption %}<p class="cap">{{ g.caption }}</p>{% endif %}
+{% endblock %}
+{% block script %}
+<script>
+Promise.all([document.fonts.ready, new Promise(r => {
+  const i = document.querySelector(".art"); if (i.complete) r(); else { i.onload = r; i.onerror = r; }
+})]).then(() => { window.__ready = true; });
+</script>
+{% endblock %}
